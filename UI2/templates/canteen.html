@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Canteen Menu</h1>
+    <div class="products">
+        <div class="product-card" data-name="Burger" data-price="5.99">
+            <h3>Burger</h3>
+            <p>$5.99</p>
+            <button onclick="addToCart('Burger', 5.99)">Add to Cart</button>
+        </div>
+        <div class="product-card" data-name="Pizza" data-price="8.99">
+            <h3>Pizza</h3>
+            <p>$8.99</p>
+            <button onclick="addToCart('Pizza', 8.99)">Add to Cart</button>
+        </div>
+        <div class="product-card" data-name="Fries" data-price="3.99">
+            <h3>Fries</h3>
+            <p>$3.99</p>
+            <button onclick="addToCart('Fries', 3.99)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total-price">0.00</span></p>
+        <button onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
