@@ -177,8 +177,7 @@
 
     <div class="container">
         <!-- Cards for menu items -->
-        <div class="card" data-id="1" data-name="Schezwan Margherita" data-price="299">
-
+        <div class="card" data-name="Schezwan Margherita" data-price="299">
             <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
             <div class="details">
                 <h4>Schezwan Margherita</h4>
@@ -189,8 +188,7 @@
             </div>
         </div>
 
-        <div class="card" data-id="2" data-name="Farmhouse Pizza" data-price="349">
-
+        <div class="card" data-name="Farmhouse Pizza" data-price="349">
             <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
             <div class="details">
                 <h4>Farmhouse Pizza</h4>
@@ -201,8 +199,7 @@
             </div>
         </div>
 
-        <div class="card" data-id="3" data-name="Cheese Burst Pizza" data-price="399">
-
+        <div class="card" data-name="Cheese Burst Pizza" data-price="399">
             <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
             <div class="details">
                 <h4>Cheese Burst Pizza</h4>
@@ -237,6 +234,9 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let totalPrice = 0;
+            const invoiceList = document.getElementById("invoice-list");
             const totalPriceElement = document.getElementById("total-price");
             const totalPriceHidden = document.getElementById("total-price-hidden");
 
