@@ -21,6 +21,7 @@ def menu():
 @app.route('/checkout', methods=['POST'])
 def checkout():
     selected_items = request.form.getlist('selected_items')
+    print("Selected item:",selected_items)
     total_price = sum(item['price'] for item in menu_items if str(item['id']) in selected_items)
     order_id = random.randint(1000, 9999)
     order_status[order_id] = "pending"
