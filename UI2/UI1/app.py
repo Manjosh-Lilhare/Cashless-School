@@ -18,6 +18,7 @@ menu_items = [
 def menu():
     return render_template('menu.html', menu_items=menu_items)
 
+selected_items=[]
 @app.route('/checkout', methods=['POST'])
 def checkout():
     selected_items = request.form.getlist('selected_items')
