@@ -18,9 +18,9 @@ menu_items = [
 def menu():
     return render_template('menu.html', menu_items=menu_items)
 
-selected_items=[]
 @app.route('/checkout', methods=['POST'])
 def checkout():
+    selected_items=[]
     selected_items = request.form.getlist('selected_items')
     print("Selected item:",selected_items)
     total_price = sum(item['price'] for item in menu_items if str(item['id']) in selected_items)
