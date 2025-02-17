@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .checkmark {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            animation: pop-in 1s ease-out;
+        }
+        .checkmark::after {
+            content: '\2713';
+            font-size: 80px;
+            color: white;
+        }
+        @keyframes pop-in {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .message {
+            font-size: 24px;
+            color: #333;
+        }
+        .order-id {
+            font-size: 20px;
+            color: #555;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark"></div>
+        <div class="message">Payment Successful</div>
+        <!-- <div class="order-id" id="orderId">Order ID: #123456</div> -->
+    </div>
+    <script>
+        setTimeout(() => {
+            document.getElementById('orderId').style.display = 'block';
+        }, 1000);
+    </script>
+</body>
+</html>

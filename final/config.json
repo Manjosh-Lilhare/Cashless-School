@@ -1,0 +1,89 @@
+{
+    "face_data_file": "face_encodings.pkl",
+    "camera_settings": {
+        "timeout": 10
+    },
+    "rfid": {
+        "port": "/dev/ttyACM0",
+        "baudrate": 9600,
+        "valid_ids": [
+            "CARD ID: 3660550963"
+        ]
+    },
+    "fingerprint": {
+        "port": "/dev/ttyUSB0",
+        "baudrate": 57600
+    },
+    "orders": {
+        "7904": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "6075": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "6507": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "2423": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "4252": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "failed"
+        },
+        "2079": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "6828": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "4564": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "failed"
+        },
+        "9480": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "3606": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "7255": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "5785": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "7885": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        },
+        "7169": {
+            "items": [],
+            "total_price": 0,
+            "payment_status": "paid"
+        }
+    }
+}

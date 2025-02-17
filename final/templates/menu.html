@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.top span {
+    font-size: 25px;
+    background: linear-gradient(160.86deg, rgb(227, 178, 65) 4.88%, rgb(133, 83, 34) 71.26%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top img {
+    width: 150px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: calc(25% - 20px);
+    text-align: center;
+    transition: 0.3s;
+    margin: 10px;
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.details {
+    margin-top: 10px;
+}
+
+.rating {
+    font-size: 18px;
+    color: gold;
+    margin: 5px 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.add-btn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-btn:hover {
+    background-color: #cc5200;
+    transform: scale(1.05);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.invoice {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.invoice h2 {
+    margin-bottom: 10px;
+}
+
+#invoice-list {
+    list-style: none;
+    padding: 0;
+}
+
+#invoice-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.total {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+    </style>
+
+    <div class="top">
+        <img src="https://api.dominos.co.in/prod-olo-api/contents/home-cms/aAkqT7DxtxYFTQfcAuPU9XM1e2zYY21KngQDeXBz.png">
+        <span>Top 10 Bestsellers</span>
+    </div>
+
+    <div class="container">
+        <!-- Cards for menu items -->
+        <div class="card" data-name="Schezwan Margherita" data-price="299">
+            <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
+            <div class="details">
+                <h4>Schezwan Margherita</h4>
+                <p>Your very own margherita, now with a spicy twist!</p>
+                <div class="rating">⭐⭐⭐⭐☆</div>
+                <div class="price">₹299</div>
+                <button class="add-btn">Add to Bucket</button>
+            </div>
+        </div>
+
+        <div class="card" data-name="Farmhouse Pizza" data-price="349">
+            <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
+            <div class="details">
+                <h4>Farmhouse Pizza</h4>
+                <p>Loaded with fresh veggies and mozzarella cheese.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="price">₹349</div>
+                <button class="add-btn">Add to Bucket</button>
+            </div>
+        </div>
+
+        <div class="card" data-name="Cheese Burst Pizza" data-price="399">
+            <img src="https://img.freepik.com/free-photo/pizza-with-sausages-tomato-cheese-olives-pepper_141793-17550.jpg?ga=GA1.1.297544811.1717868978&semt=ais_hybrid" alt="Pizza">
+            <div class="details">
+                <h4>Cheese Burst Pizza</h4>
+                <p>Oozing with extra cheese for a delightful experience.</p>
+                <div class="rating">⭐⭐⭐⭐☆</div>
+                <div class="price">₹399</div>
+                <button class="add-btn">Add to Bucket</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="invoice">
+        <h2>Invoice</h2>
+        <ul id="invoice-list">
+            <!-- Selected items will be added here dynamically -->
+        </ul>
+        <div class="total">
+            <strong>Total:</strong> ₹<span id="total-price">0</span>
+        </div>
+
+        <!-- Payment Mode Selection -->
+        <div>
+            <label><input type="radio" name="payment_mode" value="rfid" checked> RFID</label>
+            <label><input type="radio" name="payment_mode" value="fingerprint"> Fingerprint</label>
+        </div>
+
+        <form action="/checkout" method="POST">
+            <input type="hidden" name="totalPrice" id="total-price-hidden" value="0">
+            <input type="hidden" name="payment_mode" id="payment_mode" value="rfid">
+            <button type="submit" class="checkout-btn">Proceed to Checkout</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let totalPrice = 0;
+            const invoiceList = document.getElementById("invoice-list");
+            const totalPriceElement = document.getElementById("total-price");
+            const totalPriceHidden = document.getElementById("total-price-hidden");
+
+            // Menu items data
+            const menuItems = [
+                { name: "Schezwan Margherita", price: 299 },
+                { name: "Farmhouse Pizza", price: 349 },
+                { name: "Cheese Burst Pizza", price: 399 }
+            ];
+
+            // Handle "Add to Bucket" button clicks
+            document.querySelectorAll(".add-btn").forEach((btn, index) => {
+                btn.addEventListener("click", function () {
+                    const item = menuItems[index];
+                    const listItem = document.createElement("li");
+                    listItem.innerHTML = `${item.name} - ₹${item.price} <button class="remove-btn">Remove</button>`;
+                    invoiceList.appendChild(listItem);
+
+                    // Update total price
+                    totalPrice += item.price;
+                    totalPriceElement.textContent = totalPrice;
+
+                    // Update hidden input for total price
+                    totalPriceHidden.value = totalPrice;
+                });
+            });
+
+            // Handle payment mode change
+            document.querySelectorAll('input[name="payment_mode"]').forEach((radio) => {
+                radio.addEventListener("change", function () {
+                    document.getElementById("payment_mode").value = radio.value;
+                });
+            });
+
+            // Handle remove button for items in the invoice
+            invoiceList.addEventListener("click", function (e) {
+                if (e.target && e.target.classList.contains("remove-btn")) {
+                    const listItem = e.target.closest("li");
+                    const price = parseInt(listItem.innerText.split("₹")[1].split(" ")[0]);
+                    totalPrice -= price;
+                    totalPriceElement.textContent = totalPrice;
+
+                    // Update hidden input for total price
+                    totalPriceHidden.value = totalPrice;
+
+                    listItem.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

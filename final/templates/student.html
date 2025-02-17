@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFE5B4, #FFF5E1);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff8c00;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile img:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .dashboard, .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: 0.3s ease-in-out;
+        }
+
+        .dashboard:hover, .section:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .money {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .money div {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFD580, #FFB347);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .money div:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ff8c00, #ff6347);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2 {
+            color: #ff8c00;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            background: rgba(255, 140, 0, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        ul li:hover {
+            transform: scale(1.05);
+        }
+
+        .transactions-box {
+            display: none;
+            margin-top: 20px;
+            background: rgba(255, 140, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .transactions-box ul li {
+            background: rgba(255, 140, 0, 0.2);
+        }
+
+        .see-more-btn {
+            background: #ff8c00;
+            border: none;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 80px;
+            margin: auto;
+            height: 30px;
+        }
+
+        .see-more-btn:hover {
+            background: #ff6347;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            width: 100%;
+            height: 400px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #ff8c00;
+        }
+
+        /* dietry */
+        .diet-monitoring {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .diet-monitoring h2 {
+            text-align: center;
+            color: #ff8c00;
+        }
+
+        .diet-summary {
+            margin-bottom: 20px;
+        }
+
+        #diet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #diet-list li {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        #diet-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        .healthy-feedback {
+            background-color: #4CAF50;
+        }
+
+        .unhealthy-feedback {
+            background-color: #FF6347;
+        }
+
+        .moderate-feedback {
+            background-color: #FFEB3B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="/default-profile-picture1.jpg" alt="Student Photo">
+            <div class="info">
+                <h1>Student Profile</h1>
+                <p><strong>UID:</strong> 23011032</p>
+                <p><strong>Name:</strong> Tony Stark</p>
+                <p><strong>Phone:</strong> +91-8767377573</p>
+                <p><strong>Parent Info:</strong> Howard (Father), Yogita (Mother)</p>
+                <p><strong>Class:</strong> 2nd Yr CSE[DS]</p>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="money">
+                <div><h3>Past Transactions</h3><p>5,000 Points</p></div>
+                <div><h3>Class Rank</h3><p>8th</p></div>
+                <div><h3>Sports Rank</h3><p>2nd</p></div>
+            </div>
+            <button class="see-more-btn" onclick="toggleTransactions()">See More</button>
+
+            <!-- Dummy Past Transactions Box -->
+            <div class="transactions-box" id="transactions-box">
+                <h3>Past Transactions</h3>
+                <ul>
+                    <li>1,000P - Jan 5, 2025</li>
+                    <li>500P - Jan 10, 2025</li>
+                    <li>3,000P - Jan 15, 2025</li>
+                    <li>1,000P - Jan 20, 2025</li>
+                </ul>
+            </div>
+
+            <!-- Expense Categories Graph -->
+            <div class="chart-container">
+                <h3>Expense Overview (Categories)</h3>
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Dietry -->
+        <div class="diet-monitoring">
+            <h2>Dietary Habits Monitoring</h2>
+            <div class="diet-summary">
+                <p><strong>Dietary Habits for the Week:</strong></p>
+                <ul id="diet-list">
+                    <!-- Dummy food data will be injected here -->
+                </ul>
+            </div>
+            
+            <!-- Feedback Section -->
+            <div id="diet-feedback"></div>
+        </div>
+        
+        <div class="section">
+            <h2>Certificate and Trophy Showcase</h2>
+            <input type="file">
+            <button>Upload Certificate</button>
+        </div>
+
+        <div class="section">
+            <h2>Borrowing History</h2>
+            <ul>
+                <li>?? "Introduction to Data Science" - Returned</li>
+                <li>?? "Advanced Mathematics" - Due 25th Jan</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleTransactions() {
+            const transactionsBox = document.getElementById('transactions-box');
+            if (transactionsBox.style.display === 'none' || transactionsBox.style.display === '') {
+                transactionsBox.style.display = 'block';
+            } else {
+                transactionsBox.style.display = 'none';
+            }
+        }
+
+        // Expense Categories Data (Canteen, Stationary, Library)
+        const expenseCategories = ['Canteen', 'Stationary', 'Library'];
+        const categoryExpenses = [500, 900, 300]; // Dummy amounts for the categories
+
+        // Chart.js: Expense Categories Bar Graph
+        const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+        const expenseChart = new Chart(expenseCtx, {
+            type: 'bar',
+            data: {
+                labels: expenseCategories, // Expense categories
+                datasets: [{
+                    label: 'Expense Categories (Points)',
+                    data: categoryExpenses, // Expense amounts
+                    backgroundColor: ['#4CAF50', '#FFC107', '#2196F3'],
+                    borderColor: ['#388E3C', '#FFA000', '#1976D2'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Define healthy and unhealthy foods
+        const healthyFoods = ['Green Salad', 'Grilled Chicken', 'Steamed Vegetables', 'Fruit Bowl', 'Smoothie', 'Veggies', 'Oats', 'Chicken Soup'];
+        const unhealthyFoods = ['Pizza', 'Burger', 'Ice Cream', 'Donuts', 'Fried Chicken', 'Chocolates', 'French Fries', 'Soda'];
+
+        // Function to randomly pick a food from either healthy or unhealthy list
+        function getRandomFood() {
+            // Randomly pick healthy or unhealthy food for the day
+            const isHealthy = Math.random() < 0.5; // 50% chance for healthy or unhealthy food
+
+            // Choose food from the respective list
+            return {
+                food: isHealthy ? healthyFoods[Math.floor(Math.random() * healthyFoods.length)] : unhealthyFoods[Math.floor(Math.random() * unhealthyFoods.length)],
+                type: isHealthy ? 'healthy' : 'unhealthy'
+            };
+        }
+
+        // Randomly generate weekly diet
+        const weeklyDiet = [];
+        const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+        daysOfWeek.forEach(day => {
+            const foodItem = getRandomFood();
+            weeklyDiet.push({ day, ...foodItem });
+        });
+
+        // Variables to track healthy and unhealthy food count
+        let healthyCount = 0;
+        let unhealthyCount = 0;
+
+        // Populate the diet list with random food data
+        const dietList = document.getElementById('diet-list');
+        weeklyDiet.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.innerText = ${item.day}: ${item.food};
+            dietList.appendChild(listItem);
+
+            // Track healthy and unhealthy foods
+            if (item.type === 'healthy') {
+                healthyCount++;
+            } else {
+                unhealthyCount++;
+            }
+        });
+
+        // Determine feedback based on healthy vs unhealthy foods
+        const dietFeedback = document.getElementById('diet-feedback');
+        if (unhealthyCount >= 5) {
+            dietFeedback.classList.add('unhealthy-feedback');
+            dietFeedback.innerHTML = "<p>Your diet seems unhealthy. Try to limit your intake of unhealthy foods!</p>";
+        } else if (healthyCount >= 5) {
+            dietFeedback.classList.add('healthy-feedback');
+            dietFeedback.innerHTML = "<p>Your diet is healthy! Keep it up with more fruits, veggies, and low-fat foods.</p>";
+        } else {
+            dietFeedback.classList.add('moderate-feedback');
+            dietFeedback.innerHTML = "<p>Your diet is moderate. Try incorporating more healthy choices.</p>";
+        }
+    </script>
+</body>
+</html>

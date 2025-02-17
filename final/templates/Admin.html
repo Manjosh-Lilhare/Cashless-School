@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    
+    <link rel="stylesheet" href="/Admin.css">
+
+<script>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #d2691e;
+    margin-bottom: 20px;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.card h2 {
+    color: #d2691e;
+    margin-bottom: 10px;
+}
+.card button {
+    padding: 10px 20px;
+    background-color: #d2691e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.card button:hover {
+    background-color: #b45f04;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.col {
+    flex: 1 1 30%;
+}
+.chart-container {
+    margin-top: 20px;
+}
+canvas {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+}
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Point Distribution</h2>
+                    <button onclick="openPointDistribution()">Manage Points</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h2>Role Management</h2>
+                    <button onclick="openRoleManagement()">Manage Roles</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h2>Performance Analysis</h2>
+                    <button onclick="openPerformanceAnalysis()">View Reports</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Transaction Monitoring</h2>
+                    <button onclick="openTransactionMonitoring()">Monitor Transactions</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h2>Leaderboards</h2>
+                    <button onclick="openLeaderboards()">View Leaderboards</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h2>Dynamic Challenges</h2>
+                    <button onclick="openDynamicChallenges()">Manage Challenges</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Health Recommendations</h2>
+                    <button onclick="openHealthRecommendations()">View Suggestions</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h2>Expense Reports</h2>
+                    <button onclick="openExpenseReports()">View Reports</button>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="chart-container">
+            <canvas id="salesChart"></canvas>
+        </div>
+
+    </div>
+
+    <script>
+        
+        function openPointDistribution() {
+            alert('Opening Point Distribution Management!');
+        }
+
+       
+        function openRoleManagement() {
+            alert('Opening Role Management Page!');
+        }
+
+    
+        function openPerformanceAnalysis() {
+            alert('Opening Performance Analysis Reports!');
+        }
+
+      
+        function openTransactionMonitoring() {
+            alert('Opening Transaction Monitoring Page!');
+        }
+
+        
+        function openLeaderboards() {
+            alert('Opening Leaderboards!');
+        }
+
+        function openDynamicChallenges() {
+            alert('Opening Dynamic Challenges!');
+        }
+
+        function openHealthRecommendations() {
+            alert('Opening Health Recommendations!');
+        }
+
+        function openExpenseReports() {
+            alert('Opening Expense Reports!');
+        }
+
+        var salesData = {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+                label: 'Total Sales (?)',
+                data: [5000, 6000, 7000, 8000], 
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var salesConfig = {
+            type: 'line',
+            data: salesData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return "?" + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var salesChart = new Chart(document.getElementById('salesChart'), salesConfig);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
